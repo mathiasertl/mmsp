@@ -1,6 +1,8 @@
 *.swp
 *.swo
 
-paper/gruppe4.aux
+paper/*.aux
+paper/*.out
 paper/gruppe4.log
+paper/gruppe4.toc
 paper/gruppe4.pdf
