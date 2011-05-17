@@ -3,4 +3,4 @@ all: clean
 	pdflatex gruppe4.tex
 
 clean:
-	rm -f gruppe4.pdf gruppe4.aux gruppe4.log texput.log gruppe4.toc
+	rm -f gruppe4.pdf *.aux gruppe4.log *.log gruppe4.toc *.out
