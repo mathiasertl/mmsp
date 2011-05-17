@@ -1,10 +1,48 @@
-\documentclass[12pt,a4paper,titlepage]{article}
-\usepackage[german]{babel}
- \author{Mathias Ertl} %TODO.
- \title{Critical Path Method}
- \setlength{\parskip}{5pt plus 2pt minus 1pt}  % Abstand zwischen Absaetzen
- \sloppy
+\documentclass[12pt,a4paper,titlepage,oneside,openany]{article}
+
+\title{Critical Path Method}
+\author{
+	Management von Softwareprojekten (Gruppe 4):\\
+	Florian St\"auble \email{e0415588@student.tuwien.ac.at},\\
+	Please write your name in email from-headers \email{e0716649@student.tuwien.ac.at},\\
+	Thomas Chrenko \email{thomas@chrenko.at},\\
+	Silvio Riener \email{silvio@riener.ws} and\\
+	Mathias Ertl \email{e0326788@student.tuwien.ac.at},
+	}
+\setlength{\parskip}{5pt plus 2pt minus 1pt}  % Abstand zwischen Absaetzen
+\sloppy
+
+% apperantly set the font to arial:
+\renewcommand{\rmdefault}{phv} % Arial
+\renewcommand{\sfdefault}{phv} % Arial
+
+% page format:
+\usepackage{geometry}
+\geometry{a4paper,top=25mm,left=25mm,right=25mm,bottom=25mm,headsep=10mm,footskip=12mm}
+
+% various packages:
+\usepackage{hyperref}
+
+% encoding:
+%\usepackage{ucs}
+%\usepackage[utf8x]{inputenc}
+%\usepackage[OT1,T1]{fontenc}
+%\usepackage{ae,aecompl}
+
+% new comand:
+\newcommand{\email}[1]{\href{mailto:#1}{$<$#1$>$}}
 
 \begin{document}
-bla.
+\maketitle
+\begin{abstract}
+% Silvio
+\end{abstract}
+\tableofcontents
+
+\include{intro}
+\include{cpm}
+\include{techinfo}
+\include{advantages}
+\include{inthefield}
+\include{conclusion}
 \end{document}
