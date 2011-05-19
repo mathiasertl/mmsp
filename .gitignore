@@ -2,6 +2,8 @@
 *.swo
 
 paper/*.aux
+paper/*.bbl
+paper/*.blg
 paper/*.out
 paper/gruppe4.log
 paper/gruppe4.toc
