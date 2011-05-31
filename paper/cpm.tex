@@ -91,6 +91,31 @@ arrow. Depending on the complexity of the graph, arrows might be descriptivly la
 references to the actual activity that may be looked up in a reference table. Such a table is needed
 in any case to store additional information (such as duration, etc.). By definition, each activity
 must be uniquely identifyable by a pair of events $i,j$, denoting the start and completion event.
+\begin{figure}[h]
+\centerline{\fbox{\includegraphics[width=50mm]{img/activity_diagram_intro}}}
+\caption{A minimal activity diagram}
+\label{pic:activity_diagram_intro}
+\end{figure}
+
+Either \emph{dummy events} and/or \emph{logical restraints} may be used in cases where a simple
+sequence of activities is not powerful enough to express the dependencies devised during planning. A
+logical restraint is a restraint is an activity that represents no work and is is drawn as a dotted
+arrow. A dummy event is an event added solely for the purpose of expressing dependencies that would
+otherwise cause violations of constraints imposed on the activity diagram.
+
+A first use of a dummy event combined with a logical restraint is when two
+(or more) activities would otherwise be identified by the same preceeding and subsequent event. In
+figure~\ref{pic:activity_diagram_one}, both activity A and B depend on activity C. Because activity A
+and B cannot both
+be identified by the sequence $1,2$, the dummy event $4$ is added simply to change the identification of
+activity B. The dotted line is the logical constraint defining that activity C depends on the
+completion of activity B.
+\begin{figure}[h]
+\centerline{\fbox{\includegraphics[width=100mm]{img/activity_diagram_one}}}
+\caption{activity diagram with dummy event and logical restraint}
+\label{pic:activity_diagram_one}
+\end{figure}
+
 
 
 \subsection{Find critical paths}
