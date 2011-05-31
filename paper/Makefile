@@ -1,4 +1,6 @@
 all: clean
+	# WARNING: We need bibtex and the cite package.
+	# on Ubuntu: apt-get install texlive-latex-recommended
 	pdflatex gruppe4.tex
 	bibtex gruppe4
 	pdflatex gruppe4.tex
