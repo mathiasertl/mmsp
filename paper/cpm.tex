@@ -39,7 +39,7 @@ during the execution of the plan.
 
 When the planning team decides on an activity, some information on it should be compiled:
 \begin{enumerate}
-  \item A distinctive, descriptive and unique name. 
+  \item A unique name. The name should be somewhat descriptive of the activity.
   \item An estimated total time that the activity will take to complete. Depending on the
     requirements, other estimates (minimum time, maximum time, \ldots) might also be of interest.
   \item Activities that must be completed before this respective activity. It is also good practice
@@ -79,13 +79,19 @@ An \emph{activity diagram}, often also called \emph{network diagram}, is the cen
 \cpm{}. The diagram is created based upon the list of activities devised in
 section~\ref{subsec:initial_planning}. 
 
+When an activity is completed, an \emph{event} is said to occur. Such an event has no 
+duration but represents an instance in time. Consequently, every activity has a \emph{starting
+event} and a \emph{completion event}. Every event has one or more preceding and subsequent
+activities, the only exceptions being the starting event (which has no preceeding activity) and the
+event that marks the end of the project (which has no subsequent event). Each event is usually
+identified by a unique integer.
+
 The most important element of an activity diagram is of course the activity, represented by a simple
 arrow. Depending on the complexity of the graph, arrows might be descriptivly labeld or labeld with
 references to the actual activity that may be looked up in a reference table. Such a table is needed
-in any case to store additional information (such as duration, etc.). 
+in any case to store additional information (such as duration, etc.). By definition, each activity
+must be uniquely identifyable by a pair of events $i,j$, denoting the start and completion event.
 
-When an activity is completed, an \emph{event} is said to occur. Such an event has no 
-duration but represents an instance in time. 
 
 \subsection{Find critical paths}
 * apply critical path method to decide: "How long will a project take"
