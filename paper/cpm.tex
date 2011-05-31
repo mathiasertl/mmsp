@@ -1,2 +1,52 @@
 \section{The Critical Path Method}
-Eigentliche Beschreibung der Methode (5 Seiten) - Mathias
+%Eigentliche Beschreibung der Methode (5 Seiten) - Mathias
+% overview:
+%http://hspm.sph.sc.edu/COURSES/J716/CPM/CPM.html
+
+The \cpm{} (or just CPM) was originally introduced by James Kelley and Morgan Walker in
+\cite{Kelley:1959:CPS:1460299.1460318}. The foundation of the \cpm{} is an abstract notion of a
+\emph{project}. A project is assumed to consist of \emph{jobs} that represent individual activities
+and are executed seperately from each other. Each job may depend on the completion of other jobs and
+in turn must be completed for other jobs to begin. The central goal of the \cpm{} is to compute a list
+of \emph{critical jobs}, where a delay in the completion of a job delays the entire project.
+
+The \cpm{} seperates planning from scheduling. In the planning phase, a planner defines all
+activities and the order in which they must take place. The planner must also consider required 
+technology, resources, people, etc. involved. A scheduler can then use the defined activities to
+devise a schedule based on the plan and on costs\cite[p. 161]{Kelley:1959:CPS:1460299.1460318}.
+
+\cpm{} has evolved since its original incarnation to include other aspects essential to the
+successfull completion of a project, such as required resources and resource-leveling. Various tools
+and techniques have been developed to optimize and shorten the critical path.
+
+\subsection{Terminology}
+The \cpm{} defines a few distinct terms which deserve a seperate explanation:
+\begin{itemize}
+  \item A \emph{job} is a distinct activity within a project. It is a seperate unit of work which
+  has a defined outcome (success condidtion) and possibly depends on the completion of other jobs.
+  \item A \emph{critical path} defines a list of jobs depending on each other where a delay in the
+  completion of one job will delay the entire project. A project might have multiple critical paths.
+  \item A \emph{critical job} is a job that is part of one or more critical paths. A job is defined
+  as critical if the maximum time available is equal to the duration of the job\cite[p.
+  163]{Kelley:1959:CPS:1460299.1460318}.
+  \item A \emph{floater} is a job that is not part of any critical path. Thus, a delay in the
+  completion of a floater does not influence the completion of the project right away. Floaters thus
+  denote jobs can be rescheduled with relative ease without impacting the entire project.
+\end{itemize}
+
+\subsection{What you can achieve using the \cpm}
+The seperation of planning and scheduling allows the project management to dynamically reschedule
+parts of the project during its execution if real-world events force a deviation from the plan.
+Reasons for deviation may be a natural disaster, a delay in the shipment of required resources or
+a late completion of a critical job. Practical experience shows, however, that rescheduling is a
+complex and error-prone task, because i.e. moving job A to next week might mean that job B cannot be
+executed because required resources are not available. %TODO: Da gibts ne quelle irgendwo dafuer.
+\subsection{How to apply the \cpm}
+* draw up list of jobs
+* make Activity or Network diagram
+* apply critical path method to decide: "How long will a project take"
+\subsection{Common errors}
+\subsection{Possible improvements}
+more information, to shorten project time, assign resources, etc.
+
+\subsection{Alternatives}
