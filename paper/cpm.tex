@@ -32,6 +32,10 @@ The \cpm{} defines a few distinct terms which deserve a seperate explanation:
   \item A \emph{floater} is a job that is not part of any critical path. Thus, a delay in the
   completion of a floater does not influence the completion of the project right away. Floaters thus
   denote jobs can be rescheduled with relative ease without impacting the entire project.
+  \item The application of the \cpm{} calculates various dates and times to every job. After
+  application of the \cpm{}, each job has i.e. an \emph{earliest start date}, a emph{latest start
+  date} and, most importantly, the buffer by which a job may be delayed without impacting the
+  completion of the entire project. Critical jobs by definition have no buffer.
 \end{itemize}
 
 \subsection{What you can achieve using the \cpm}
@@ -39,13 +43,18 @@ The seperation of planning and scheduling allows the project management to dynam
 parts of the project during its execution if real-world events force a deviation from the plan.
 Reasons for deviation may be a natural disaster, a delay in the shipment of required resources or
 a late completion of a critical job. Practical experience shows, however, that rescheduling is a
-complex and error-prone task, because i.e. moving job A to next week might mean that job B cannot be
-executed because required resources are not available. %TODO: Da gibts ne quelle irgendwo dafuer.
+complex and error-prone task. Moving a job may be simple in theory, but might in fact be very
+complex. For example, moving a job to next week might mean that a required specialist is not
+available for a different job that is scheduled during that time period.
+%TODO: Da gibts ne quelle irgendwo dafuer.
+
 \subsection{How to apply the \cpm}
 * draw up list of jobs
 * make Activity or Network diagram
 * apply critical path method to decide: "How long will a project take"
+
 \subsection{Common errors}
+
 \subsection{Possible improvements}
 more information, to shorten project time, assign resources, etc.
 
