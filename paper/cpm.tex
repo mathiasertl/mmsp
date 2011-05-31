@@ -19,25 +19,6 @@ devise a schedule based on the plan and on costs\cite[p. 161]{Kelley:1959:CPS:14
 successfull completion of a project, such as required resources and resource-leveling. Various tools
 and techniques have been developed to optimize and shorten the critical path.
 
-\subsection{Terminology}
-The \cpm{} defines a few distinct terms which deserve a seperate explanation:
-\begin{itemize}
-  \item A \emph{job} is a distinct activity within a project. It is a seperate unit of work which
-  has a defined outcome (success condidtion) and possibly depends on the completion of other jobs.
-  \item A \emph{critical path} defines a list of jobs depending on each other where a delay in the
-  completion of one job will delay the entire project. A project might have multiple critical paths.
-  \item A \emph{critical job} is a job that is part of one or more critical paths. A job is defined
-  as critical if the maximum time available is equal to the duration of the job\cite[p.
-  163]{Kelley:1959:CPS:1460299.1460318}.
-  \item A \emph{floater} is a job that is not part of any critical path. Thus, a delay in the
-  completion of a floater does not influence the completion of the project right away. Floaters thus
-  denote jobs can be rescheduled with relative ease without impacting the entire project.
-  \item The application of the \cpm{} calculates various dates and times to every job. After
-  application of the \cpm{}, each job has i.e. an \emph{earliest start date}, a emph{latest start
-  date} and, most importantly, the buffer by which a job may be delayed without impacting the
-  completion of the entire project. Critical jobs by definition have no buffer.
-\end{itemize}
-
 \subsection{What you can achieve using the \cpm}
 The seperation of planning and scheduling allows the project management to dynamically reschedule
 parts of the project during its execution if real-world events force a deviation from the plan.
@@ -48,9 +29,65 @@ complex. For example, moving a job to next week might mean that a required speci
 available for a different job that is scheduled during that time period.
 %TODO: Da gibts ne quelle irgendwo dafuer.
 
-\subsection{How to apply the \cpm}
-* draw up list of jobs
-* make Activity or Network diagram
+\subsection{Initial planning}\label{subsec:initial_planning}
+The first thing when applying the \cpm{} is to draw up a list of activities. This has to take place
+\emph{before} any real work is done on the project and might be considered an initial kick-off of
+the project. This list can be done in the
+form of a \emph{work-breakdown structure} or in any more or less formal structure. The planning team
+has to take great care that this stage is done correctly, as any errors could cause big problems
+during the execution of the plan.
+
+When the planning team decides on an activity, some information on it should be compiled:
+\begin{enumerate}
+  \item A distinctive, descriptive and unique name. 
+  \item An estimated total time that the activity will take to complete. Depending on the
+    requirements, other estimates (minimum time, maximum time, \ldots) might also be of interest.
+  \item Activities that must be completed before this respective activity. It is also good practice
+    to (informally, at first) write down other activities that depend on the activity.
+\end{enumerate}
+
+One important question that should be considered is the level of abstraction the plan should have.
+For example, when trying to build a large oil-tanker, it doesn't really make sense to have the
+activities "build outer hull" and "tighten screws of the captains chair" on the same plan. The
+chosen abstraction of the plan depends on
+\begin{itemize}
+  \item Who creates the list of activities. The list of activities might even be drawn up by higher
+    levels of management and only then handed down to different devisions of the planning
+    departement. As such, the activities might already indicate a certain division of work. 
+  \item Who will read and work with the plan. A plan based on the \cpm{} might also be used to 
+    formally communicate i.e. between different management divisions, autonomous sections of a 
+    company or other companies alltogether. Depending on the recipient of the plan and his
+    experience and knowledge, the a different level of detail might become necessary.
+  \item The overall complexity of the project. For a very large and complex project comprised of
+    many different individual activites, a lower level of abstraction might not be practical. A
+    possible solution is to logically split the project into individual parts, so that each part
+    becomes seperated (albeit depending on each other) from each other. 
+  \item Dependency on other activities. A defining axiom of the \cpm{} is that each activity can
+    only start when all activities it depends on are fully completed\cite[p. 37]{obrien}. Following
+    this axiom, it might become necessary to split an activity A into two parts, if activity B
+    depends on the first part of A and the second part of A depends on activity B.
+\end{itemize}
+
+One common mistake made in the implementation of the \cpm{} is to assume that software support tools
+(see section~\ref{sec:inthefield}) either draw up a list of activities for you or make drawing up
+such a list a lot easier. Software support tools do not (and cannot) aim to ease this task, they can
+only process the information they receive. If this initial work is not done carefully, any diagrams
+etc. drawn by software are not any better than if no software were involved\cite[p. 39]{obrien}.
+
+\subsection{Drawing the activity diagram}
+An \emph{activity diagram}, often also called \emph{network diagram}, is the central part of the
+\cpm{}. The diagram is created based upon the list of activities devised in
+section~\ref{subsec:initial_planning}. 
+
+The most important element of an activity diagram is of course the activity, represented by a simple
+arrow. Depending on the complexity of the graph, arrows might be descriptivly labeld or labeld with
+references to the actual activity that may be looked up in a reference table. Such a table is needed
+in any case to store additional information (such as duration, etc.). 
+
+When an activity is completed, an \emph{event} is said to occur. Such an event has no 
+duration but represents an instance in time. 
+
+\subsection{Find critical paths}
 * apply critical path method to decide: "How long will a project take"
 
 \subsection{Common errors}
@@ -59,3 +96,4 @@ available for a different job that is scheduled during that time period.
 more information, to shorten project time, assign resources, etc.
 
 \subsection{Alternatives}
+PERT?
