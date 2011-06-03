@@ -91,6 +91,7 @@ arrow. Depending on the complexity of the graph, arrows might be descriptivly la
 references to the actual activity that may be looked up in a reference table. Such a table is needed
 in any case to store additional information (such as duration, etc.). By definition, each activity
 must be uniquely identifyable by a pair of events $i,j$, denoting the start and completion event.
+Figure~\ref{pic:activity_diagram_intro} shows a minimal and abstract activity diagram.
 \begin{figure}[h]
 \centerline{\fbox{\includegraphics[width=50mm]{img/activity_diagram_intro}}}
 \caption{A minimal activity diagram}
@@ -99,32 +100,54 @@ must be uniquely identifyable by a pair of events $i,j$, denoting the start and 
 
 Either \emph{dummy events} and/or \emph{logical restraints} may be used in cases where a simple
 sequence of activities is not powerful enough to express the dependencies devised during planning. A
-logical restraint is a restraint is an activity that represents no work and is is drawn as a dotted
-arrow. A dummy event is an event added solely for the purpose of expressing dependencies that would
-otherwise cause violations of constraints imposed on the activity diagram.
+logical restraint is an activity that represents no work (and has no duration) and is is drawn as a
+dotted arrow. A dummy event is an event added solely for the purpose of expressing dependencies that
+would otherwise cause violations of constraints imposed on the activity diagram.
 
-A first use of a dummy event combined with a logical restraint is when two
-(or more) activities would otherwise be identified by the same preceeding and subsequent event. In
-figure~\ref{pic:activity_diagram_one}, both activity A and B depend on activity C. Because activity A
-and B cannot both
-be identified by the sequence $1,2$, the dummy event $4$ is added simply to change the identification of
-activity B. The dotted line is the logical constraint defining that activity C depends on the
-completion of activity B.
+A first use of a dummy event combined with a logical restraint is when two (or more) activities
+would normally be identified by the same preceeding and subsequent event. This generally occurs when
+two activities have the same set of predecessors and successors.
 \begin{figure}[h]
 \centerline{\fbox{\includegraphics[width=100mm]{img/activity_diagram_one}}}
 \caption{activity diagram with dummy event and logical restraint}
 \label{pic:activity_diagram_one}
 \end{figure}
 
+In figure~\ref{pic:activity_diagram_one}, both activity A and B depend on activity C. Because
+activity A and B cannot both be identified by the sequence $1,2$, the dummy event $4$ is added
+simply to change the identification of activity B. The dotted line is the logical constraint
+defining that activity C depends on the completion of activity B.
 
 
-\subsection{Find critical paths}
+\subsection{Adding durations to the activity diagram}
+Drawing the activity diagram visualizes logical dependencies between certain activities. This helps
+with scheduling activities, but it doesn't yet tell us about which activities are more time-critical
+than others. This is of course the information that the \cpm{} is all about: The goal is to find the
+\emph{critical path(s)}, one or more sequences of activities that must not be delayed if the project
+at hand is to complete in a timely fashion.
+
+The key to this information is to add time estimates of the activities to the diagram. An estimate
+might be a "most likely" estimate. Other possibilities are the minimum or maximum amount of time
+that an activity might take. More enhanced versions of the \cpm{} may use a combination of different
+time estimates, but the original method of detecting critical paths is based on using a single time
+estimate. 
+
+A good first start for time estimates is to use the time it might take most likely to complete the
+task. If the time estimates are done by a skilled team, additional information might flow into the
+estimates. For example, if a skilled team is known to be available for performing the activity, the
+estimate might be more optimistic. The estimate might be even more precise if the activity does not
+represent a totally new task but some work that was performed in the past already. This basically
+means that experience and knowledge of both the planning team and the teams "in the field" should be
+considered in any time estimates.
+
+min-max-durchschnitt
+
+\subsection{Find critical paths}\label{sec:Find_criticial_paths}
 * apply critical path method to decide: "How long will a project take"
 
 \subsection{Common errors}
+* logical loops
+* express dependencies in diagram that aren't there
 
 \subsection{Possible improvements}
 more information, to shorten project time, assign resources, etc.
-
-\subsection{Alternatives}
-PERT?
