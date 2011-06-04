@@ -118,7 +118,6 @@ activity A and B cannot both be identified by the sequence $1,2$, the dummy even
 simply to change the identification of activity B. The dotted line is the logical constraint
 defining that activity C depends on the completion of activity B.
 
-
 \subsection{Adding durations to the activity diagram}
 Drawing the activity diagram visualizes logical dependencies between certain activities. This helps
 with scheduling activities, but it doesn't yet tell us about which activities are more time-critical
@@ -147,11 +146,71 @@ a very high figure (almost worst case scenario) and a very optimistic figure and
 compromise between the two extremes.
 
 \subsection{Find critical paths}\label{sec:Find_criticial_paths}
-* apply critical path method to decide: "How long will a project take"
+The information compiled in the previous sections is now ready to be used to find the \emph{critical
+paths} of the project. This is of course the quintessential part of the \cpm{} that gives it a
+decisive advantage over a much simpler bar chart or an even simpler todo-list.
 
-\subsection{Common errors}
-* logical loops
-* express dependencies in diagram that aren't there
+Several attributes are calculated from the durations of each activity and the composition of the
+diagram. After applying the \cpm{}, each activity has a point in time where the activity may finish
+in a best-case scenario. This time is called the \emph{earliest start} or simply $ES$. Each activity
+will consequently also have an \emph{earliest finish} or $EF$ for short. The earliest start of the
+first activity is by definition the time the project starts, in relative terms simply 0. The
+earliest finish of the last activity in the project is also the \emph{earliest finish} of the entire
+project. The earliest start of an activity other than the very first activity is the same as the
+last earliest finish ($LEF_{pred}$) of all activities that the respective activity depends on. 
 
-\subsection{Possible improvements}
-more information, to shorten project time, assign resources, etc.
+The earliest
+finish is calculated simply as the earliest start of an activity plus the duration denoted in the
+previous section. Because earliest start and earliest finish are by definition calculated from the
+start of the project to the end of the project, calculating these attributes is referred to as the
+\emph{forward pass} (in contrast to the \emph{backward pass} explained below). The equations in
+(\ref{eq:forward_pass}) contain all the relevant formula for the forward pass.
+
+\begin{eqnarray}
+&& ES_0=0 \nonumber\\
+&& EF=ES+D \nonumber\\
+&& ES=LEF_{pred}
+\label{eq:forward_pass}
+\end{eqnarray}
+
+Using the attributes ($ES$, $EF$) calculated in the forward pass, we can start with the next pass,
+the \emph{backward pass}. In this pass, we calculate attributes from project finish to project
+start, hence its name. After the backward pass, each activity will have a \emph{latest finish} 
+($LF$) attribte, which denotes the time by which an activity \emph{must} be completed. The violation
+of a latest finish attribute by definition means that the entire project is delayed. The latest
+finish attribute is calculated as the earliest erliest start ($ELS$) of all activities that succeed
+it. 
+
+The backward pass also computes the \emph{latest start} ($LS$) of an activity, which simply is the
+latest finish minus the duration of the activity. The latestest start expresses the time by which an
+activity \emph{must start} if it shouldn't delay the completion of the project. The equation in
+(\ref{eq:backward_pass_one}) contain all the relevant formula of the backward pass.
+
+\begin{eqnarray}
+&& LF_{end}=EF_{end} \nonumber\\
+&& LS=LF-D \nonumber\\
+&& LF=ELS_{succ}
+\label{eq:backward_pass_one}
+\end{eqnarray}
+
+A \emph{second} backward pass enables us to calculate more interesting attributes. The \emph{free
+float} ($FF$) is the difference between the earliest start of any succeeding activity and the early
+finish of the respective activity. It thus represents the amount of time by which an activity can be
+delayed without delaying the entire project.  The \emph{independent float} ($IF$) is defined as the
+difference between the earliest early start of any succeeding activity and the latest early finish 
+of any preceeding activities. The formulas are given in (\ref{eq:backward_pass_two}).
+
+\begin{eqnarray}
+&& FF=EES_{succ}-EF \nonumber\\
+&& IF=EES_{succ}-LEF{pred}-D \\
+\label{eq:backward_pass_two}
+\end{eqnarray}
+
+
+%\subsection{Common errors}
+%* logical loops
+%* express dependencies in diagram that aren't there
+%
+%\subsection{Possible improvements}
+%more information, to shorten project time, assign resources, etc.
+%* resource leveling (s. 76 mitte)
