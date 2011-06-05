@@ -1,9 +1,6 @@
 \section{Manual Compution and Technical Information}
 
-NOTE: 2.5 Find critical paths + this chapter need to be merged (context-wise, since both contain pretty much the same information !)
-
-
-This chapter first provides the neccessary formulars for calculating CPM-diagrams and then the manual computation of the most important values of a CPM-diagram are explained by a specific example. In the course of this manual compuation it is also shown how the Critical-Path itself can easily be determined by hand.
+This chapter first provides the necessary formulas for calculating CPM-diagrams and then the manual computation of the most important values of a CPM-diagram are explained by a specific example. In the course of this manual computation it is also shown how the Critical-Path itself can easily be determined by hand.
 
 \subsection{Formulas} \label{formulas}
 
@@ -30,7 +27,7 @@ ES = LEF_{PRED}
 \end{equation}
 
 \subsubsection{Backward Pass}
-The backward pass deals with the question "How late can an acivity start without delaying the project".
+The backward pass deals with the question "How late can an activity start without delaying the project".
 For this question to answer the LS (Late Start) and LF (Late Finish) must be calculated.
 By definition the latest finish time (LF) of the last activity or event is traditionally equal to the earliest finish time (EF). This is because it is assumed that it's economic to complete a project in as less time as possible. This might not be always the case, depending on cost factors etc., but for the CPM algorithm it is expressed as follows:
 \begin{equation}
@@ -50,6 +47,19 @@ Working backward from an activity shows that the LF depends on the successor act
 LF = ELS_{SUCC}
 \end{equation}
 In this context ELS (Earliest late start) is the earliest LS of any successor activity.
+
+A \emph{second} backward pass enables us to calculate more interesting attributes. The \emph{free
+float} ($FF$) is the difference between the earliest start of any succeeding activity and the early
+finish of the respective activity. It thus represents the amount of time by which an activity can be
+delayed without delaying the entire project.  The \emph{independent float} ($IF$) is defined as the
+difference between the earliest early start of any succeeding activity and the latest early finish 
+of any proceeding activities. The formulas are given in (\ref{eq:backward_pass_two}).
+
+\begin{eqnarray}
+&& FF=EES_{succ}-EF \nonumber\\
+&& IF=EES_{succ}-LEF{pred}-D \\
+\label{eq:backward_pass_two}
+\end{eqnarray}
  
 \subsubsection{Total Float}
  
@@ -62,7 +72,13 @@ In this context ELS (Earliest late start) is the earliest LS of any successor ac
 TF = LF - EF
 \end{equation} 
 
+
+
+
 \subsection{Determining the Critical Path} \label{determine_crit_path}
+The information compiled in the previous sections is now ready to be used to find the \emph{critical
+paths} of the project. This is of course the quintessential part of the \cpm{} that gives it a
+decisive advantage over a much simpler bar chart or an even simpler todo-list.
 
 A critical activity is, as described in the Important terms - section, a activity which must not get delayed for the project to finish as early as possible and therefore lies on the critical path. Since there may be more than one critical path in a project, the following three conditions must hold that a single activity is a critical activity:
 
@@ -72,7 +88,7 @@ A critical activity is, as described in the Important terms - section, a activit
 	\item The difference between the ES and LF must equal the duration. $ |ES - LF| = D $
 \end{enumerate}
 
-The first 2 Conditions are very easily seen after calculating ES, EF, LS, LF for each acitivity. The third condition is a bit more tricky, since an extra calculation has to be made for each activity.
+The first 2 Conditions are very easily seen after calculating ES, EF, LS, LF for each activity. The third condition is a bit more tricky, since an extra calculation has to be made for each activity.
 Furthermore, each critical activity must follow at least one other critical activity(unless of course it is the last activity), meaning that a critical-path cannot be interrupted. It is however possible for a critical path to spread out into a number of paths, and these paths can converge again into one.
 
 
@@ -89,32 +105,32 @@ While usually the nodes are labeled with numbers, in this example the nodes are 
 \subsubsection{Forward Pass and Early Event Time}
 As described at \ref{forwardPass} first the forward Pass is made determining the earliest finish time of the project and ES and EF of activities.
 
-The project starts at event A, and therefore event A is labelled with 0. (Figure \ref{pic:plan2})
+The project starts at event A, and therefore event A is labelled with 0. (Figure ~\ref{pic:plan2})
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation2.png}}}
 \label{pic:plan2}
 \caption{Project Plan}
 \end{figure}
 After this it is easy to determine that event B can be reached within 3t, since there is only activity AB in between with duration 3t. Event B is therefore labelled with 3.
-To reach event C two activities namely AB and BC are necessary, which durations 3 and 2, therefore the earliest time even C can be reached is $3+2 = 5$. Event C is labelled with 5. (Figure \ref{pic:plan3})
+To reach event C two activities namely AB and BC are necessary, which durations 3 and 2, therefore the earliest time even C can be reached is $3+2 = 5$. Event C is labelled with 5. (Figure ~\ref{pic:plan3})
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation3.png}}}
 \label{pic:plan3}
-\caption{}
+\caption{Project Plan - Step 2}
 \end{figure}
 
-Calculating the same for events D, E and F the diagram looks as shown in figure \ref{pic:plan4}.
+Calculating the same for events D, E and F the diagram looks as shown in figure ~\ref{fig:plan4}.
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation4.png}}}
-\label{pic:plan4}
+\label{fig:plan4}
 \caption{}
 \end{figure}
 
-Event G has to activities that lead into it, EG and FG, which both have the duration 5, but different time-labels (17 and 8). The label of event G is calculated by $ max(label E + duration EG, label F + duration FG) = max(17+5, 8+5) = max(22,13) = 22 $. Doing the same for event H the diagrams looks like figure \ref{pic:plan5}.
+Event G has to activities that lead into it, EG and FG, which both have the duration 5, but different time-labels (17 and 8). The label of event G is calculated by $ max(label E + duration EG, label F + duration FG) = max(17+5, 8+5) = max(22,13) = 22 $. Doing the same for event H the diagrams looks like figure ~\ref{pic:plan5}.
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation4.png}}}
 \label{pic:plan5}
-\caption{}
+\caption{Project Plan - Step 3}
 \end{figure}
 \subsubsection{Backwards Pass and Late Event Time}
  Secondly the backward pass is done to determine the Late Event Time and subsequently the LS and LF for each activity.
@@ -129,7 +145,7 @@ In this example the start-node for the backwards pass is event H with late event
 The values added with the backward pass are in blue underneath each event.
 
 \subsubsection{Activity Start and Finish Times}
-From figure \ref{pic:plan6} we can determine the ES, EF, LS, LF and TF of each activity. A typical activity looks as follows:
+From figure ~\ref{pic:plan6} we can determine the ES, EF, LS, LF and TF of each activity. A typical activity looks as follows:
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics{img/activity_plan.png}}}
 \label{pic:activity_plan}
