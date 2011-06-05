@@ -105,32 +105,32 @@ While usually the nodes are labeled with numbers, in this example the nodes are 
 \subsubsection{Forward Pass and Early Event Time}
 As described at \ref{forwardPass} first the forward Pass is made determining the earliest finish time of the project and ES and EF of activities.
 
-The project starts at event A, and therefore event A is labelled with 0. (Figure ~\ref{pic:plan2})
+The project starts at event A, and therefore event A is labelled with 0. (\autoref{pic:plan_two})
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation2.png}}}
-\label{pic:plan2}
 \caption{Project Plan}
+\label{pic:plan_two}
 \end{figure}
 After this it is easy to determine that event B can be reached within 3t, since there is only activity AB in between with duration 3t. Event B is therefore labelled with 3.
-To reach event C two activities namely AB and BC are necessary, which durations 3 and 2, therefore the earliest time even C can be reached is $3+2 = 5$. Event C is labelled with 5. (Figure ~\ref{pic:plan3})
+To reach event C two activities namely AB and BC are necessary, which durations 3 and 2, therefore the earliest time even C can be reached is $3+2 = 5$. Event C is labelled with 5. (\autoref{pic:plan3})
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation3.png}}}
-\label{pic:plan3}
 \caption{Project Plan - Step 2}
+\label{pic:plan3}
 \end{figure}
 
-Calculating the same for events D, E and F the diagram looks as shown in figure ~\ref{fig:plan4}.
+Calculating the same for events D, E and F the diagram looks as shown in \autoref{fig:plan4}.
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation4.png}}}
-\label{fig:plan4}
-\caption{}
-\end{figure}
-
-Event G has to activities that lead into it, EG and FG, which both have the duration 5, but different time-labels (17 and 8). The label of event G is calculated by $ max(label E + duration EG, label F + duration FG) = max(17+5, 8+5) = max(22,13) = 22 $. Doing the same for event H the diagrams looks like figure ~\ref{pic:plan5}.
-\begin{figure}[h] 
-\centerline{\fbox{\includegraphics[width=130mm]{img/computation4.png}}}
-\label{pic:plan5}
 \caption{Project Plan - Step 3}
+\label{fig:plan4}
+\end{figure}
+
+Event G has to activities that lead into it, EG and FG, which both have the duration 5, but different time-labels (17 and 8). The label of event G is calculated by $ max(label E + duration EG, label F + duration FG) = max(17+5, 8+5) = max(22,13) = 22 $. Doing the same for event H the diagrams looks like \autoref{pic:plan5}.
+\begin{figure}[h] 
+\centerline{\fbox{\includegraphics[width=130mm]{img/computation4.png}}}
+\caption{Project Plan - Step 4}
+\label{pic:plan5}
 \end{figure}
 \subsubsection{Backwards Pass and Late Event Time}
  Secondly the backward pass is done to determine the Late Event Time and subsequently the LS and LF for each activity.
@@ -139,17 +139,17 @@ Event G has to activities that lead into it, EG and FG, which both have the dura
 In this example the start-node for the backwards pass is event H with late event time 25. Event G for example is labeled with $ 25-3 = 22 $, and when 2 different activities lead into one event is is labelled the maximum of the predecessor-event (predecessor in the backward sense) minus the duration of the activity. This leads to the following diagram:
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation6.png}}}
-\label{pic:plan6}
 \caption{final project plan}
+\label{pic:plan6}
 \end{figure}
 The values added with the backward pass are in blue underneath each event.
 
 \subsubsection{Activity Start and Finish Times}
-From figure ~\ref{pic:plan6} we can determine the ES, EF, LS, LF and TF of each activity. A typical activity looks as follows:
+From \autoref{pic:plan6} we can determine the ES, EF, LS, LF and TF of each activity. A typical activity looks as follows:
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics{img/activity_plan.png}}}
-\label{pic:activity_plan}
 \caption{activity legend}
+\label{pic:activity_plan}
 \end{figure}
 Each activity is bound by 2 events and has a Duration (D) and after completing the forward the ES can be calculated as follows:
 \begin{equation}
@@ -175,8 +175,8 @@ LS = LF - D
 When applying the rules of \ref{determine_crit_path} the each activity is easily marked as critical or non-critical and the critical path becomes visible:
 \begin{figure}[h] 
 \centerline{\fbox{\includegraphics[width=130mm]{img/computation7.png}}}
-\label{pic:plan7}
 \caption{final project plan - critical path}
+\label{pic:plan7}
 \end{figure}
 
 
